@@ -15,3 +15,15 @@ def fibs(num)
 
   array
 end
+
+def fibs_rec(num)
+  if num == 1
+    return [0]
+  elsif num == 2
+    return [0,1]
+  else
+    result = fibs_rec(num-1)
+    result.push(result[num-3] + result[num-2])
+    return result
+  end
+end
