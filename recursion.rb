@@ -29,14 +29,21 @@ def fibs_rec(num)
 end
 
 def merge_sort(array)
+  # base case
   if array.length < 2
     return array
   else
     result = []
+    # splits array into two halves
     split_array = array.each_slice( (array.size/2.0).round ).to_a
+
+    # sort left half
     left_array = merge_sort(split_array[0])
+
+    # sort right half
     right_array = merge_sort(split_array[1])
     
+    # merges both halves together
     i, j = 0, 0
     while i < left_array.length && j < right_array.length
       if left_array[i] < right_array[j]
@@ -47,11 +54,9 @@ def merge_sort(array)
         j += 1
       end
     end
-
-    result += left_array.drop(i)
-    result += right_array.drop(j)
     
-    result
+    # merge all arrays that might still have values
+    result + left_array.drop(i) + right_array.drop(j)
   end
 end
 
